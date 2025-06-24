@@ -15,7 +15,7 @@ VueInfinityStack is a modern infinite stacking overlay solution designed exclusi
 
 ### Props
 | Property Name | Type | Default Value | Description |
-|-----:|-----:|-----:|-----:|
+|:-----|:-----|:-----|:-----|
 |visible|	Boolean|	-|	Controls the visibility of the popup layer|
 |isAnimation|	Boolean|	true|	Enables/disables transition animations|
 |zIndex|	Number|	1000|	Base z-index value for layer stacking|
@@ -26,6 +26,6 @@ VueInfinityStack is a modern infinite stacking overlay solution designed exclusi
 ### Events
 
 |Property Name|	parameter|	Description|
-|-----:|-----:|-----:|
+|:-----|:-----|:-----|
 |onOpen|	(id: string, extra: object)	|Emitted when the popup layer is opened|
 |onClose|	(event: { isPopstate: boolean }, extra: object)	|Emitted when the popup layer is closed|
