@@ -1,2 +1,21 @@
-# VueInfinityStack-
-VueInfinityStack 是一款专为 Vue 3 设计的现代化无限层叠弹层解决方案，它让复杂弹层管理变得简单而优雅。无论是简单的对话框、复杂的多步骤向导，还是深度嵌套的用户界面，VueInfinityStack 都能提供流畅、可靠的管理能力。
+# VueInfinityStack
+
+[![npm version](https://img.shields.io/npm/v/vue-infinity-stack.svg)](https://www.npmjs.com/package/vue-infinity-stack)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> An infinite stacking popup layer component for Vue 3
+
+## 特性
+
+- 🌌 无限层叠能力
+- ⏳ 历史记录同步
+- 🎚️ 智能层级管理
+- 🌀 优雅过渡动画
+- 📱 响应式设计
+
+## 安装
+
+```bash
+npm install vue-infinity-stack
+# 或
+yarn add vue-infinity-stack
