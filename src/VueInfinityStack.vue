@@ -54,7 +54,7 @@
     }
   })
   
-  const emit = defineEmits(['update:visible', 'onOpen', 'onClose'])
+  const emit = defineEmits(['onOpen', 'onClose'])
   
   // 生成唯一UID方法
   const guid = () => Array.from({ length: 8 }, (_, i) => (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1) + ([1, 2, 3, 4].includes(i) ? '-' : '')).join('')
@@ -62,7 +62,7 @@
   // 响应式数据
   const popupRef = ref(null)
   const hasAnimation = ref(true)
-  const slotVisible = ref(false)
+  const slotVisible = ref(true)
   const isSynced = ref(false)
   const id = ref(`popuplayer_${guid()}`)
   const maxZIndex = ref(1000)

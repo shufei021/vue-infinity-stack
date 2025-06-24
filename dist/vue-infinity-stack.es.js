@@ -41,7 +41,7 @@ const V = ["id"], q = {
   },
   emits: ["update:visible", "onOpen", "onClose"],
   setup(a, { expose: x, emit: S }) {
-    const n = a, d = S, I = () => Array.from({ length: 8 }, (e, t) => ((1 + Math.random()) * 65536 | 0).toString(16).substring(1) + ([1, 2, 3, 4].includes(t) ? "-" : "")).join(""), c = l(null), y = l(!0), p = l(!1), m = l(!1), f = l(`popuplayer_${I()}`), g = l(1e3);
+    const n = a, d = S, I = () => Array.from({ length: 8 }, (e, t) => ((1 + Math.random()) * 65536 | 0).toString(16).substring(1) + ([1, 2, 3, 4].includes(t) ? "-" : "")).join(""), c = l(null), y = l(!0), f = l(!0), m = l(!1), p = l(`popuplayer_${I()}`), g = l(1e3);
     let v = null;
     const r = () => {
       const e = n.storeName, t = window[n.storeType], i = JSON.parse, o = JSON.stringify, s = t.getItem(e) ? i(t.getItem(e)) : [];
@@ -65,18 +65,18 @@ const V = ["id"], q = {
     }, h = (e) => {
       var s, u;
       const t = ((s = e.state) == null ? void 0 : s.id) || "", i = r().getCur(), o = i.length;
-      o && t !== i[o - 1] && i[o - 1] === f.value && (d("onClose", { isPopstate: !0 }, n.extra), d("update:visible", !1), r().pop(), m.value = !0, (u = document.activeElement) == null || u.blur());
+      o && t !== i[o - 1] && i[o - 1] === p.value && (d("onClose", { isPopstate: !0 }, n.extra), d("update:visible", !1), r().pop(), m.value = !0, (u = document.activeElement) == null || u.blur());
     };
     k(() => n.visible, (e) => {
-      v && clearTimeout(v), e ? p.value = !0 : v = setTimeout(() => {
-        p.value = !1, n.ishasAnimation && (y.value = !0);
+      v && clearTimeout(v), e ? f.value = !0 : v = setTimeout(() => {
+        f.value = !1, n.ishasAnimation && (y.value = !0);
       }, 300), T(() => {
         e ? b() : C(), window[e ? "addEventListener" : "removeEventListener"]("popstate", h);
       });
     });
     const b = () => {
-      window.history.pushState({ id: f.value }, ""), r().push(f.value), setTimeout(() => {
-        d("onOpen", f.value, n.extra);
+      window.history.pushState({ id: p.value }, ""), r().push(p.value), setTimeout(() => {
+        d("onOpen", p.value, n.extra);
       }, 200);
     }, C = () => {
       if (m.value)
@@ -115,9 +115,9 @@ const V = ["id"], q = {
       ref_key: "popupRef",
       ref: c,
       class: "vue-infinity-stack",
-      id: a.uuid || f.value
+      id: a.uuid || p.value
     }, [
-      p.value ? M(e.$slots, "default", { key: 0 }) : P("", !0)
+      f.value ? M(e.$slots, "default", { key: 0 }) : P("", !0)
     ], 12, V));
   }
 };

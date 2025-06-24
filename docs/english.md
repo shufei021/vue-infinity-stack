@@ -4,12 +4,14 @@
 
 VueInfinityStack is a modern infinite stacking overlay solution designed exclusively for Vue 3, empowering simple yet elegant management of complex overlays. Whether handling simple dialogs, intricate multi-step wizards, or deeply nested user interfaces, VueInfinityStack delivers seamless and reliable management capabilities.
 
+
 ## Features
 - 🌌 **Infinite Stacking** - Unlimited nested layers with visual hierarchy
 - ⏳ **History Sync** - Perfect browser back/forward integration
 - 🎚️ **Smart Layer Management** - Automatic z-index optimization
 - 🌀 **Elegant Animations** - Smooth bezier-curve transitions
 - 📱 **Responsive Design** - Flawless mobile & desktop experience
+
 
 ## API document
 
