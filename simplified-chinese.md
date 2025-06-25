@@ -1,6 +1,6 @@
 # VueInfinityStack
 
-[English](../README.md) | 简体中文 
+[English](./README.md) | 简体中文 
 
 [![npm version](https://img.shields.io/npm/v/vue-infinity-stack.svg)](https://www.npmjs.com/package/vue-infinity-stack)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
