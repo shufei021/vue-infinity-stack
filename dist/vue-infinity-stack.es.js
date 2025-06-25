@@ -1,5 +1,5 @@
-import { defineComponent as k, ref as a, watch as T, nextTick as E, onMounted as O, onBeforeUnmount as L, openBlock as z, createElementBlock as B, normalizeStyle as J, renderSlot as M, createCommentVNode as V } from "vue";
-const _ = ["id"], P = /* @__PURE__ */ k({
+import { defineComponent as k, ref as a, watch as T, nextTick as E, onMounted as O, onBeforeUnmount as L, openBlock as z, createElementBlock as J, normalizeStyle as M, renderSlot as V, createCommentVNode as _ } from "vue";
+const B = ["id"], P = /* @__PURE__ */ k({
   __name: "VueInfinityStack",
   props: {
     uuid: { default: "" },
@@ -11,14 +11,13 @@ const _ = ["id"], P = /* @__PURE__ */ k({
     extra: { default: () => ({}) },
     storeType: { default: "localStorage" },
     getContainer: { type: [Function, String], default: "" },
-    dynamic: { type: Boolean, default: !1 },
     isAsync: { type: Boolean, default: !1 },
     ishasAnimation: { type: Function, default: () => {
     } }
   },
   emits: ["update:visible", "onOpen", "onClose"],
   setup(f, { expose: I, emit: x }) {
-    const o = f, l = x, s = a(null), m = a(!0), d = a(!1), p = a(!1), r = a(`popuplayer_${C()}`), y = a(1e3);
+    const o = f, l = x, s = a(null), m = a(!0), p = a(!1), d = a(!1), r = a(`popuplayer_${C()}`), y = a(1e3);
     let c = null;
     function C() {
       return Array.from(
@@ -50,14 +49,14 @@ const _ = ["id"], P = /* @__PURE__ */ k({
       var h;
       const t = ((h = e.state) == null ? void 0 : h.id) || "", n = u().getCur(), i = n.length;
       if (i && t !== n[i - 1] && n[i - 1] === r.value) {
-        l("onClose", { isPopstate: !0 }, o.extra || {}), l("update:visible", !1), u().pop(), p.value = !0;
+        l("onClose", { isPopstate: !0 }, o.extra || {}), l("update:visible", !1), u().pop(), d.value = !0;
         const S = document.activeElement;
         S instanceof HTMLElement && S.blur();
       }
     }
     T(() => o.visible, (e) => {
-      c && clearTimeout(c), e ? d.value = !0 : c = setTimeout(() => {
-        d.value = !1, typeof o.ishasAnimation == "function" && (m.value = !0);
+      c && clearTimeout(c), e ? p.value = !0 : c = setTimeout(() => {
+        p.value = !1, typeof o.ishasAnimation == "function" && (m.value = !0);
       }, 300), E(() => {
         e ? b() : w(), window[e ? "addEventListener" : "removeEventListener"]("popstate", v);
       });
@@ -68,8 +67,8 @@ const _ = ["id"], P = /* @__PURE__ */ k({
       }, 200);
     }
     function w() {
-      if (p.value) {
-        p.value = !1;
+      if (d.value) {
+        d.value = !1;
         return;
       }
       l("onClose", { isPopstate: !1 }, o.extra || {}), u().pop(), history.back();
@@ -101,8 +100,8 @@ const _ = ["id"], P = /* @__PURE__ */ k({
     }), I({
       asyncHandler: g,
       backLvBy: N
-    }), (e, t) => (z(), B("div", {
-      style: J([{ position: "fixed", top: "0", left: "0", bottom: "0", right: "0", width: "100%", "backface-visibility": "hidden", "background-color": "#fff" }, {
+    }), (e, t) => (z(), J("div", {
+      style: M([{ position: "fixed", top: "0", left: "0", bottom: "0", right: "0", width: "100%", "backface-visibility": "hidden", "background-color": "#fff" }, {
         zIndex: e.autoIndex ? y.value : e.zIndex,
         transform: e.visible ? "translateX(0)" : "translateX(100%)",
         transition: e.isAnimation && m.value ? "transform 0.3s" : "none"
@@ -112,8 +111,8 @@ const _ = ["id"], P = /* @__PURE__ */ k({
       class: "popup-layer",
       id: e.uuid || r.value
     }, [
-      d.value ? M(e.$slots, "default", { key: 0 }) : V("", !0)
-    ], 12, _));
+      p.value ? V(e.$slots, "default", { key: 0 }) : _("", !0)
+    ], 12, B));
   }
 }), H = {
   install(f) {
