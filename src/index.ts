@@ -1,4 +1,4 @@
-import VueInfinityStack from './components/VueInfinityStack.vue';
+import VueInfinityStack from './VueInfinityStack.vue';
 
 export { VueInfinityStack }
 

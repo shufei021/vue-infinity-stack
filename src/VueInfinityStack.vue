@@ -12,7 +12,6 @@ interface Props {
   extra?: Record<string, any>
   storeType?: 'localStorage' | 'sessionStorage'
   getContainer?: (() => HTMLElement) | string
-  dynamic?: boolean
   isAsync?: boolean
   ishasAnimation?: () => void
 }
@@ -33,7 +32,6 @@ const props = withDefaults(defineProps<Props>(), {
   extra: () => ({}),
   storeType: 'localStorage',
   getContainer: '',
-  dynamic: false,
   isAsync: false,
   ishasAnimation: () => {}
 })

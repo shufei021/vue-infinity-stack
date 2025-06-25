@@ -7,6 +7,8 @@ English | [简体中文](docs/simplified-chinese.md)
 
 **An infinite stacking popup layer component for Vue 3**
 
+## Example
+[codesandbox](https://cpqykl-5173.csb.app/)  [codesandbox-code](https://codesandbox.io/p/devbox/vueinfinitystack-demo-en-cpqykl)  
 
 VueInfinityStack is a modern infinite stacking overlay solution designed exclusively for Vue 3, empowering simple yet elegant management of complex overlays. Whether handling simple dialogs, intricate multi-step wizards, or deeply nested user interfaces, VueInfinityStack delivers seamless and reliable management capabilities.
 
