@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<Props>(), {
   storeName: 'historyState',
   extra: () => ({}),
   storeType: 'localStorage',
-  getContainer: '',
+  getContainer: 'body',
   isAsync: false,
   ishasAnimation: () => {}
 })
@@ -197,17 +197,19 @@ defineExpose({
 </script>
 
 <template>
-  <div
-    style="position: fixed;top: 0;left: 0;bottom: 0;right: 0;width: 100%;backface-visibility: hidden;background-color: #fff;"
-    ref="popupRef"
-    class="popup-layer"
-    :id="uuid || id"
-    :style="{
-      zIndex: autoIndex ? maxZIndex : zIndex,
-      transform: visible ? 'translateX(0)' : 'translateX(100%)',
-      transition: isAnimation && hasAnimation ? 'transform 0.3s' : 'none'
-    }"
-  >
-    <slot v-if="slotVisible" />
-  </div>
+  <Teleport :to="getContainer">
+    <div
+      style="position: fixed;top: 0;left: 0;bottom: 0;right: 0;width: 100%;backface-visibility: hidden;background-color: #fff;"
+      ref="popupRef"
+      class="popup-layer"
+      :id="uuid || id"
+      :style="{
+        zIndex: autoIndex ? maxZIndex : zIndex,
+        transform: visible ? 'translateX(0)' : 'translateX(100%)',
+        transition: isAnimation && hasAnimation ? 'transform 0.3s' : 'none'
+      }"
+    >
+      <slot v-if="slotVisible" />
+    </div>
+  </Teleport>
 </template>

@@ -1,5 +1,5 @@
-import { defineComponent as k, ref as a, watch as T, nextTick as E, onMounted as O, onBeforeUnmount as L, openBlock as z, createElementBlock as J, normalizeStyle as M, renderSlot as V, createCommentVNode as _ } from "vue";
-const B = ["id"], P = /* @__PURE__ */ k({
+import { defineComponent as T, ref as a, watch as k, nextTick as E, onMounted as O, onBeforeUnmount as L, openBlock as V, createBlock as z, Teleport as J, createElementVNode as M, normalizeStyle as B, renderSlot as _, createCommentVNode as P } from "vue";
+const q = ["id"], F = /* @__PURE__ */ T({
   __name: "VueInfinityStack",
   props: {
     uuid: { default: "" },
@@ -10,16 +10,16 @@ const B = ["id"], P = /* @__PURE__ */ k({
     storeName: { default: "historyState" },
     extra: { default: () => ({}) },
     storeType: { default: "localStorage" },
-    getContainer: { type: [Function, String], default: "" },
+    getContainer: { type: [Function, String], default: "body" },
     isAsync: { type: Boolean, default: !1 },
     ishasAnimation: { type: Function, default: () => {
     } }
   },
   emits: ["update:visible", "onOpen", "onClose"],
-  setup(f, { expose: I, emit: x }) {
-    const o = f, l = x, s = a(null), m = a(!0), p = a(!1), d = a(!1), r = a(`popuplayer_${C()}`), y = a(1e3);
+  setup(f, { expose: I, emit: C }) {
+    const o = f, l = C, s = a(null), m = a(!0), d = a(!1), p = a(!1), r = a(`popuplayer_${b()}`), y = a(1e3);
     let c = null;
-    function C() {
+    function b() {
       return Array.from(
         { length: 8 },
         (e, t) => ((1 + Math.random()) * 65536 | 0).toString(16).substring(1)
@@ -45,42 +45,42 @@ const B = ["id"], P = /* @__PURE__ */ k({
         }
       };
     }
-    function v(e) {
+    function g(e) {
       var h;
       const t = ((h = e.state) == null ? void 0 : h.id) || "", n = u().getCur(), i = n.length;
       if (i && t !== n[i - 1] && n[i - 1] === r.value) {
-        l("onClose", { isPopstate: !0 }, o.extra || {}), l("update:visible", !1), u().pop(), d.value = !0;
+        l("onClose", { isPopstate: !0 }, o.extra || {}), l("update:visible", !1), u().pop(), p.value = !0;
         const S = document.activeElement;
         S instanceof HTMLElement && S.blur();
       }
     }
-    T(() => o.visible, (e) => {
-      c && clearTimeout(c), e ? p.value = !0 : c = setTimeout(() => {
-        p.value = !1, typeof o.ishasAnimation == "function" && (m.value = !0);
+    k(() => o.visible, (e) => {
+      c && clearTimeout(c), e ? d.value = !0 : c = setTimeout(() => {
+        d.value = !1, typeof o.ishasAnimation == "function" && (m.value = !0);
       }, 300), E(() => {
-        e ? b() : w(), window[e ? "addEventListener" : "removeEventListener"]("popstate", v);
+        e ? x() : w(), window[e ? "addEventListener" : "removeEventListener"]("popstate", g);
       });
     });
-    function b() {
+    function x() {
       window.history.pushState({ id: r.value }, ""), u().push(r.value), setTimeout(() => {
         l("onOpen", r.value, o.extra || {});
       }, 200);
     }
     function w() {
-      if (d.value) {
-        d.value = !1;
+      if (p.value) {
+        p.value = !1;
         return;
       }
       l("onClose", { isPopstate: !1 }, o.extra || {}), u().pop(), history.back();
     }
-    function A() {
+    function N() {
       return Math.max(
         ...Array.from(document.querySelectorAll("*")).map(
           (e) => parseInt(window.getComputedStyle(e).zIndex) || 1
         )
       );
     }
-    function N(e, t, n) {
+    function A(e, t, n) {
       for (let i = e + 1; i <= t; i++)
         setTimeout(() => {
           n == null || n(i);
@@ -88,38 +88,40 @@ const B = ["id"], P = /* @__PURE__ */ k({
     }
     O(() => {
       let e = null;
-      typeof o.getContainer == "function" ? e = o.getContainer() : o.getContainer && (e = document.querySelector(o.getContainer)), e == null || e.appendChild(s.value), o.autoIndex && (y.value = A()), !o.isAsync && g();
+      typeof o.getContainer == "function" ? e = o.getContainer() : o.getContainer && (e = document.querySelector(o.getContainer)), e == null || e.appendChild(s.value), o.autoIndex && (y.value = N()), !o.isAsync && v();
     });
-    function g() {
+    function v() {
       const e = u().getCur(), t = (e == null ? void 0 : e.length) || 0;
       t && history.go(-t);
     }
     return L(() => {
       var e;
-      window.removeEventListener("popstate", v), (e = s.value) != null && e.parentNode && s.value.parentNode.removeChild(s.value);
+      window.removeEventListener("popstate", g), (e = s.value) != null && e.parentNode && s.value.parentNode.removeChild(s.value);
     }), I({
-      asyncHandler: g,
-      backLvBy: N
-    }), (e, t) => (z(), J("div", {
-      style: M([{ position: "fixed", top: "0", left: "0", bottom: "0", right: "0", width: "100%", "backface-visibility": "hidden", "background-color": "#fff" }, {
-        zIndex: e.autoIndex ? y.value : e.zIndex,
-        transform: e.visible ? "translateX(0)" : "translateX(100%)",
-        transition: e.isAnimation && m.value ? "transform 0.3s" : "none"
-      }]),
-      ref_key: "popupRef",
-      ref: s,
-      class: "popup-layer",
-      id: e.uuid || r.value
-    }, [
-      p.value ? V(e.$slots, "default", { key: 0 }) : _("", !0)
-    ], 12, B));
+      asyncHandler: v,
+      backLvBy: A
+    }), (e, t) => (V(), z(J, { to: e.getContainer }, [
+      M("div", {
+        style: B([{ position: "fixed", top: "0", left: "0", bottom: "0", right: "0", width: "100%", "backface-visibility": "hidden", "background-color": "#fff" }, {
+          zIndex: e.autoIndex ? y.value : e.zIndex,
+          transform: e.visible ? "translateX(0)" : "translateX(100%)",
+          transition: e.isAnimation && m.value ? "transform 0.3s" : "none"
+        }]),
+        ref_key: "popupRef",
+        ref: s,
+        class: "popup-layer",
+        id: e.uuid || r.value
+      }, [
+        d.value ? _(e.$slots, "default", { key: 0 }) : P("", !0)
+      ], 12, q)
+    ], 8, ["to"]));
   }
-}), H = {
+}), X = {
   install(f) {
-    f.component("VueInfinityStack", P);
+    f.component("VueInfinityStack", F);
   }
 };
 export {
-  P as VueInfinityStack,
-  H as default
+  F as VueInfinityStack,
+  X as default
 };
