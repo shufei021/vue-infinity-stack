@@ -11,7 +11,7 @@ interface Props {
   storeName?: string
   extra?: Record<string, any>
   storeType?: 'localStorage' | 'sessionStorage'
-  getContainer?: (() => HTMLElement) | string
+  getContainer?: string
   isAsync?: boolean
   ishasAnimation?: () => void
 }
@@ -158,14 +158,6 @@ function backLvBy(targetLv: number, totalLv: number, callBack?: (i: number) => v
 
 // mounted 生命周期
 onMounted(() => {
-  let container: HTMLElement | null = null
-  if (typeof props.getContainer === 'function') {
-    container = props.getContainer()
-  } else if (props.getContainer) {
-    container = document.querySelector(props.getContainer)
-  }
-  container?.appendChild(popupRef.value!)
-
   if (props.autoIndex) {
     maxZIndex.value = getMaxZIndex()
   }

@@ -1,6 +1,6 @@
 {
   "name": "vue-infinity-stack",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "VueInfinityStack is a modern infinite stacking overlay solution designed exclusively for Vue 3, empowering simple yet elegant management of complex overlays. Whether handling simple dialogs, intricate multi-step wizards, or deeply nested user interfaces, VueInfinityStack delivers seamless and reliable management capabilities.",
   "main": "dist/vue-infinity-stack.umd.js",
   "module": "dist/vue-infinity-stack.es.js",

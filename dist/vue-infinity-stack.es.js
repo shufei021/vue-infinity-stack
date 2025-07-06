@@ -1,5 +1,5 @@
-import { defineComponent as T, ref as a, watch as k, nextTick as E, onMounted as O, onBeforeUnmount as L, openBlock as V, createBlock as z, Teleport as J, createElementVNode as M, normalizeStyle as B, renderSlot as _, createCommentVNode as P } from "vue";
-const q = ["id"], F = /* @__PURE__ */ T({
+import { defineComponent as T, ref as s, watch as k, nextTick as E, onMounted as O, onBeforeUnmount as L, openBlock as V, createBlock as z, Teleport as J, createElementVNode as M, normalizeStyle as B, renderSlot as _, createCommentVNode as P } from "vue";
+const H = ["id"], R = /* @__PURE__ */ T({
   __name: "VueInfinityStack",
   props: {
     uuid: { default: "" },
@@ -10,29 +10,29 @@ const q = ["id"], F = /* @__PURE__ */ T({
     storeName: { default: "historyState" },
     extra: { default: () => ({}) },
     storeType: { default: "localStorage" },
-    getContainer: { type: [Function, String], default: "body" },
+    getContainer: { default: "body" },
     isAsync: { type: Boolean, default: !1 },
     ishasAnimation: { type: Function, default: () => {
     } }
   },
   emits: ["update:visible", "onOpen", "onClose"],
-  setup(f, { expose: I, emit: C }) {
-    const o = f, l = C, s = a(null), m = a(!0), d = a(!1), p = a(!1), r = a(`popuplayer_${b()}`), y = a(1e3);
+  setup(f, { expose: I, emit: b }) {
+    const i = f, u = b, l = s(null), m = s(!0), d = s(!1), p = s(!1), a = s(`popuplayer_${x()}`), y = s(1e3);
     let c = null;
-    function b() {
+    function x() {
       return Array.from(
         { length: 8 },
         (e, t) => ((1 + Math.random()) * 65536 | 0).toString(16).substring(1)
       ).join("");
     }
-    function u() {
-      const e = o.storeName || "historyState", t = window[o.storeType || "localStorage"], n = t.getItem(e) ? JSON.parse(t.getItem(e)) : [];
+    function r() {
+      const e = i.storeName || "historyState", t = window[i.storeType || "localStorage"], n = t.getItem(e) ? JSON.parse(t.getItem(e)) : [];
       return {
         reset() {
           (!t.getItem(e) || n.length) && t.setItem(e, JSON.stringify([]));
         },
-        update(i) {
-          t.setItem(e, JSON.stringify([...n, i]));
+        update(o) {
+          t.setItem(e, JSON.stringify([...n, o]));
         },
         getCur() {
           return n;
@@ -40,38 +40,38 @@ const q = ["id"], F = /* @__PURE__ */ T({
         pop() {
           n.pop(), t.setItem(e, JSON.stringify(n));
         },
-        push(i) {
-          t.setItem(e, JSON.stringify([...n, i]));
+        push(o) {
+          t.setItem(e, JSON.stringify([...n, o]));
         }
       };
     }
-    function g(e) {
-      var h;
-      const t = ((h = e.state) == null ? void 0 : h.id) || "", n = u().getCur(), i = n.length;
-      if (i && t !== n[i - 1] && n[i - 1] === r.value) {
-        l("onClose", { isPopstate: !0 }, o.extra || {}), l("update:visible", !1), u().pop(), p.value = !0;
+    function v(e) {
+      var g;
+      const t = ((g = e.state) == null ? void 0 : g.id) || "", n = r().getCur(), o = n.length;
+      if (o && t !== n[o - 1] && n[o - 1] === a.value) {
+        u("onClose", { isPopstate: !0 }, i.extra || {}), u("update:visible", !1), r().pop(), p.value = !0;
         const S = document.activeElement;
         S instanceof HTMLElement && S.blur();
       }
     }
-    k(() => o.visible, (e) => {
+    k(() => i.visible, (e) => {
       c && clearTimeout(c), e ? d.value = !0 : c = setTimeout(() => {
-        d.value = !1, typeof o.ishasAnimation == "function" && (m.value = !0);
+        d.value = !1, typeof i.ishasAnimation == "function" && (m.value = !0);
       }, 300), E(() => {
-        e ? x() : w(), window[e ? "addEventListener" : "removeEventListener"]("popstate", g);
+        e ? w() : C(), window[e ? "addEventListener" : "removeEventListener"]("popstate", v);
       });
     });
-    function x() {
-      window.history.pushState({ id: r.value }, ""), u().push(r.value), setTimeout(() => {
-        l("onOpen", r.value, o.extra || {});
+    function w() {
+      window.history.pushState({ id: a.value }, ""), r().push(a.value), setTimeout(() => {
+        u("onOpen", a.value, i.extra || {});
       }, 200);
     }
-    function w() {
+    function C() {
       if (p.value) {
         p.value = !1;
         return;
       }
-      l("onClose", { isPopstate: !1 }, o.extra || {}), u().pop(), history.back();
+      u("onClose", { isPopstate: !1 }, i.extra || {}), r().pop(), history.back();
     }
     function N() {
       return Math.max(
@@ -81,24 +81,23 @@ const q = ["id"], F = /* @__PURE__ */ T({
       );
     }
     function A(e, t, n) {
-      for (let i = e + 1; i <= t; i++)
+      for (let o = e + 1; o <= t; o++)
         setTimeout(() => {
-          n == null || n(i);
-        }, i * 30);
+          n == null || n(o);
+        }, o * 30);
     }
     O(() => {
-      let e = null;
-      typeof o.getContainer == "function" ? e = o.getContainer() : o.getContainer && (e = document.querySelector(o.getContainer)), e == null || e.appendChild(s.value), o.autoIndex && (y.value = N()), !o.isAsync && v();
+      i.autoIndex && (y.value = N()), !i.isAsync && h();
     });
-    function v() {
-      const e = u().getCur(), t = (e == null ? void 0 : e.length) || 0;
+    function h() {
+      const e = r().getCur(), t = (e == null ? void 0 : e.length) || 0;
       t && history.go(-t);
     }
     return L(() => {
       var e;
-      window.removeEventListener("popstate", g), (e = s.value) != null && e.parentNode && s.value.parentNode.removeChild(s.value);
+      window.removeEventListener("popstate", v), (e = l.value) != null && e.parentNode && l.value.parentNode.removeChild(l.value);
     }), I({
-      asyncHandler: v,
+      asyncHandler: h,
       backLvBy: A
     }), (e, t) => (V(), z(J, { to: e.getContainer }, [
       M("div", {
@@ -108,20 +107,20 @@ const q = ["id"], F = /* @__PURE__ */ T({
           transition: e.isAnimation && m.value ? "transform 0.3s" : "none"
         }]),
         ref_key: "popupRef",
-        ref: s,
+        ref: l,
         class: "popup-layer",
-        id: e.uuid || r.value
+        id: e.uuid || a.value
       }, [
         d.value ? _(e.$slots, "default", { key: 0 }) : P("", !0)
-      ], 12, q)
+      ], 12, H)
     ], 8, ["to"]));
   }
-}), X = {
+}), $ = {
   install(f) {
-    f.component("VueInfinityStack", F);
+    f.component("VueInfinityStack", R);
   }
 };
 export {
-  F as VueInfinityStack,
-  X as default
+  R as VueInfinityStack,
+  $ as default
 };

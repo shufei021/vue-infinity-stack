@@ -39,7 +39,7 @@ declare const _sfc_main: import("vue").DefineComponent<import("vue").ExtractProp
         default: string;
     };
     getContainer: {
-        type: __PropType<string | (() => HTMLElement) | undefined>;
+        type: __PropType<string | undefined>;
         required: false;
         default: string;
     };
@@ -93,7 +93,7 @@ declare const _sfc_main: import("vue").DefineComponent<import("vue").ExtractProp
         default: string;
     };
     getContainer: {
-        type: __PropType<string | (() => HTMLElement) | undefined>;
+        type: __PropType<string | undefined>;
         required: false;
         default: string;
     };
@@ -118,7 +118,7 @@ declare const _sfc_main: import("vue").DefineComponent<import("vue").ExtractProp
     storeName: string | undefined;
     extra: Record<string, any> | undefined;
     storeType: "localStorage" | "sessionStorage" | undefined;
-    getContainer: string | (() => HTMLElement) | undefined;
+    getContainer: string | undefined;
     isAsync: boolean | undefined;
     ishasAnimation: (() => void) | undefined;
 }, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
